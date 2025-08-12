@@ -5,19 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GenesaAI Agent by D-ID</title>
     <style>
-      body {
-        margin: 0;
-        padding: 0;
-        height: 100vh;
-      }
-      /* Make the agent fixed in the bottom right */
-      #agent-container {
+        :root { --gap: 20px; }
+        html, body { margin: 0; height: 100%; background: transparent; }
+        /* Fixed bubble inside the iframe */
+        #agent-container {
         position: fixed;
-        bottom: 20px;
-        right: 20px;
+        right: var(--gap);
+        bottom: calc(var(--gap) + env(safe-area-inset-bottom, 0px));
         z-index: 9999;
-      }
-    </style>
+        }
+        /* Tweak on small screens */
+        @media (max-width: 480px) {
+        #agent-container {
+            right: 12px;
+            bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+            transform: scale(.92);
+            transform-origin: bottom right;
+        }
+        }
+  </style>
 </head>
 <body>
     <div id="agent-container">
