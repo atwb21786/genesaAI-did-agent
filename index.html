@@ -4,16 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GenesaAI Agent by D-ID</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+      }
+      /* Make the agent fixed in the bottom right */
+      #agent-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 9999;
+      }
+    </style>
 </head>
-<body>    
-    <script
-        type="module"
-        src="https://agent.d-id.com/v1/index.js"
-        data-name="did-agent"
-        data-mode="fabio"
-        data-client-key="YXV0aDB8NjgyY2E2ZTUxMmEwYjdjYWE3Y2JiOWViOnFvMUZKdUNydGF6UVozaUlQbEFkTQ=="
-        data-agent-id="agt_Yzfdf5SU"
-        data-monitor="true">
-    </script>
+<body>
+    <div id="agent-container">
+        <script
+            type="module"
+            src="https://agent.d-id.com/v1/index.js"
+            data-name="did-agent"
+            data-mode="fabio"
+            data-client-key="YXV0aDB8NjgyY2E2ZTUxMmEwYjdjYWE3Y2JiOWViOnFvMUZKdUNydGF6UVozaUlQbEFkTQ=="
+            data-agent-id="agt_Yzfdf5SU"
+            data-monitor="true">
+        </script>
+    </div>    
 </body>
 </html>
