@@ -5,36 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GenesaAI Agent by D-ID</title>
     <style>
-        body {
-            margin:0;
-            padding:0;
-            height:100%;
-            background:transparent;
+        html, body {
+            margin: 0;
+            height: 100%;
+            background: transparent;
         }
-
-       
-        #agent-container {
+        /* Full-viewport overlay so we can center reliably */
+        #agent-viewport {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            inset: 0;                 /* top:0; right:0; bottom:0; left:0 */
+            display: flex;
+            align-items: center;
+            justify-content: center;  /* centers horizontally & vertically */
             z-index: 9999;
-            transform: scale(.95); /* scale down a bit */
-            transform-origin: bottom right;
+            pointer-events: none;     /* ensure only the agent bubble grabs clicks */
+        }
+        /* The agent element itself */
+        #agent-center {
+            pointer-events: auto;
+            transform: scale(0.95);   /* tweak size if needed */
+            transform-origin: center center;
+        }
+        /* Small phones: scale down a bit more */
+        @media (max-width: 420px) {
+        #agent-center { transform: scale(0.88); }
         }
         
   </style>
 </head>
 <body>
-    <div id="agent-container">
-        <script
-            type="module"
-            src="https://agent.d-id.com/v1/index.js"
-            data-name="did-agent"
-            data-mode="fabio"
-            data-client-key="YXV0aDB8NjgyY2E2ZTUxMmEwYjdjYWE3Y2JiOWViOnFvMUZKdUNydGF6UVozaUlQbEFkTQ=="
-            data-agent-id="agt_Yzfdf5SU"
-            data-monitor="true">
-        </script>
-    </div>    
+    <div class="agent-viewport">
+        <div id="agent-container">
+            <script
+                type="module"
+                src="https://agent.d-id.com/v1/index.js"
+                data-name="did-agent"
+                data-mode="fabio"
+                data-client-key="YXV0aDB8NjgyY2E2ZTUxMmEwYjdjYWE3Y2JiOWViOnFvMUZKdUNydGF6UVozaUlQbEFkTQ=="
+                data-agent-id="agt_Yzfdf5SU"
+                data-monitor="true">
+            </script>
+        </div>    
+    </div>
 </body>
 </html>
